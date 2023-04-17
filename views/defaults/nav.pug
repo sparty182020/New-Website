@@ -1,0 +1,21 @@
+.navigation
+  nav
+    ul
+      case page
+        when 1
+          li.selected Home
+          li
+            a(href='/socials') Socials
+        when 2
+          li
+            a(href='/') About Me
+          li.selected Socials
+        default
+          li
+            a(href='/') Home
+          li
+            a(href='/about-me') About Me
+          li
+            a(href='/game') Game
+          li
+            a(href='/socials') Socials
