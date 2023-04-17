@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
-const https = require('https');
-const fs = require('fs');
+const http = require('http');
 const path = require('path');
 require('dotenv').config();
 const { PORT: port } = process.env;
@@ -53,9 +52,6 @@ app.use((req, res, next) => {
         });
 });
 
-https.createServer({
-    key: fs.readFileSync('private/server.key'),
-    cert: fs.readFileSync('private/server.cert')
-}, app).listen(port, () => {
+http.createServer(app).listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
