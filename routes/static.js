@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.get(`/css/d`, (req, res) => { res.sendFile(`${process.cwd()}/assets/stylesheets/general/combined.css`) });
+router.get(`/css/d/`, (req, res) => { res.sendFile(`${process.cwd()}/assets/stylesheets/general/combined.css`) });
 
 router.get(`/css/c/:file`, (req, res) => {
     const file = req.params.file;
@@ -13,6 +13,10 @@ router.get(`/css/f/:file`, (req, res) => {
     res.sendFile(`${process.cwd()}/assets/stylesheets/file-specific/${file}.css`);
 });
 
+router.get(`/js/lock.js`, (req, res) => {
+    res.sendFile(`${process.cwd()}/assets/scripts/Other/lock.js`);
+});
+
 router.get(`/js/fs/:file`, (req, res) => {
     const file = req.params.file;
     res.sendFile(`${process.cwd()}/assets/scripts/File-Specific/${file}`);
@@ -21,11 +25,6 @@ router.get(`/js/fs/:file`, (req, res) => {
 router.get(`/js/cg/:file`, (req, res) => {
     const file = req.params.file;
     res.sendFile(`${process.cwd()}/assets/scripts/CoG/${file}`);
-});
-
-router.get(`/js/o/:file`, (req, res) => {
-    const file = req.params.file;
-    res.sendFile(`${process.cwd()}/assets/scripts/Other/${file}`);
 });
 
 router.get(`/f/:file`, (req, res) => {
@@ -61,7 +60,7 @@ router.get(`/sitemap`, (req, res) => {
 router.get(`/thumbnail`, (req, res) => {
     res
         .setHeader('Cache-Control', 'no-cache')
-        .redirect("https://cdn.discordapp.com/attachments/999266213697945652/1081273691867992124/image.png")
+        .sendFile(`${process.cwd()}/assets/media/images/bg.png`)
 });
 
 router.get(`/chessthumbnail`, (req, res) => {

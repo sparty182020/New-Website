@@ -28,14 +28,15 @@ router.use((err, req, res, next) => {
         default:
             res
                 .status(500)
-                .render('err/500.pug', {
-                    title: '500 Internal Server Error',
+                .render('err/501.pug', {
+                    title: '501 Internal Server Error',
                     message: 'An internal server error has occurred.',
                     path: req.path,
                     return: req.headers.referer
                 });
             break;
     }
+    console.log(err);
 });
 
 // 404 error handling

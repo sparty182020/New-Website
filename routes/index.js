@@ -14,7 +14,9 @@ router.get('/socials', (req, res, next) => {
 });
 
 router.get('/blank', (req, res, next) => {
-    res.render('main/blank.pug')
+    res.render('main/blank.pug', {
+        locked: true,
+    })
 });
 
 module.exports = router;
