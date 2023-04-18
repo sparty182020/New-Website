@@ -6,13 +6,22 @@ const staticRoutes = require('./static');
 const legalRoutes = require('./legal');
 const indexRoutes = require('./index');
 
+router.use((_, res, next) => {
+    res
+        .setHeader('X-Creator', 'https://github.com/sparty182020')
+        .setHeader('X-Source-Code', 'https://github.com/sparty182020/new-website')
+        .setHeader('X-Active-Page', 'https://pp.sparty18.com')
+        .setHeader('X-Copyright', 'Open Source AGPL-3.0 or later');
+    next();
+})
+
 // Using the routes
 router.use('/static', staticRoutes);
 router.use('/legal', legalRoutes);
 router.use('/', indexRoutes);
 
 // Generic error handling
-router.use((err, req, res, next) => {
+router.use((err, req, res, _) => {
     switch (err.code) {
         case 401:
         case 403:
@@ -40,7 +49,7 @@ router.use((err, req, res, next) => {
 });
 
 // 404 error handling
-router.use((req, res, next) => {
+router.use((req, res, _) => {
     res
         .status(404)
         .render('err/404.pug', {
