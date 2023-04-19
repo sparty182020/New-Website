@@ -10,7 +10,7 @@ router.use((_, res, next) => {
     res
         .setHeader('X-Creator', 'https://github.com/sparty182020')
         .setHeader('X-Source-Code', 'https://github.com/sparty182020/new-website')
-        .setHeader('X-Active-Page', 'https://pp.sparty18.com')
+        .setHeader('X-Active-Page', 'https://project.sparty18.com')
         .setHeader('X-Copyright', 'Open Source AGPL-3.0 or later');
     next();
 })
